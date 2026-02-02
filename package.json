@@ -1,0 +1,43 @@
+{
+  "name": "self-health-check",
+  "version": "1.0.0",
+  "description": "Self-Health-Check Skill for Clawdbot - 定期健康检查",
+  "main": "scripts/health-check.js",
+  "scripts": {
+    "health-check": "node scripts/health-check.js --full",
+    "health-quick": "node scripts/health-check.js",
+    "test": "node scripts/health-check.js --dry-run",
+    "configure": "bash scripts/configure.sh",
+    "uninstall": "bash scripts/uninstall.sh",
+    "update": "bash scripts/update.sh",
+    "analyze": "node scripts/analyze-trends.js",
+    "dashboard": "node scripts/dashboard/server.js",
+    "install-cron": "bash scripts/install.sh",
+    "create-package": "bash create-package.sh"
+  },
+  "keywords": [
+    "health",
+    "monitoring",
+    "self-check",
+    "heartbeat",
+    "clawdbot"
+  ],
+  "author": "clawdbot",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.0"
+  },
+  "bin": {
+    "health-check": "./scripts/health-check.js",
+    "health-configure": "./scripts/configure.sh",
+    "health-analyze": "./scripts/analyze-trends.js",
+    "health-dashboard": "./scripts/dashboard/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/clawd-skells.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

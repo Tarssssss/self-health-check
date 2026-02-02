@@ -1,0 +1,18 @@
+[Unit]
+Description=Clawdbot Self-Health-Check Timer
+Requires=health-check.service
+
+[Timer]
+# 每 30 分钟运行一次
+OnUnitActiveSec=30min
+# 或者使用日历时间（例如每小时的 0 分和 30 分）
+# OnCalendar=*:0/30
+
+# 启动后延迟 1 分钟首次运行
+OnBootSec=1min
+
+# 如果上一次运行还在进行，跳过本次
+Persistent=true
+
+[Install]
+WantedBy=timers.target

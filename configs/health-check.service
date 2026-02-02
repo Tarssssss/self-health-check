@@ -1,0 +1,18 @@
+[Unit]
+Description=Clawdbot Self-Health-Check Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/clawd/skills/self-health-check
+ExecStart=/usr/bin/node scripts/health-check.js --notify
+Environment="NODE_ENV=production"
+EnvironmentFile=/path/to/clawd/.env
+
+# 日志
+StandardOutput=append:/tmp/clawdbot/health-check.log
+StandardError=append:/tmp/clawdbot/health-check-error.log
+
+[Install]
+WantedBy=multi-user.target
