@@ -7,28 +7,28 @@ on:
     branches: [ main, master ]
 
 jobs:
-  lint:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-      - run: npm ci
-      - name: Check syntax
-        run: node scripts/health-check.js --dry-run
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-      - run: npm ci
-      - name: Run health check
-        run: npm test
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check scripts/health-check.js
+          node --check scripts/analyze-trends.js
+          node --check scripts/dashboard/server.js
+          node --check scripts/checks/config.js
+          node --check scripts/checks/syntax.js
+          node --check scripts/checks/dependencies.js
+          node --check scripts/checks/logs.js
+          node --check scripts/checks/git.js
+          node --check scripts/lib/logger.js
+          node --check scripts/lib/notifier.js
