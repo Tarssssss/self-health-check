@@ -11,7 +11,8 @@
  *   node dashboard/server.js --public        # 公网访问
  */
 
-const fs = require('fs').const promises = require('fs').promises;
+const fs = require('fs');
+const { promises } = require('fs');
 const path = require('path');
 const { existsSync } = require('fs');
 const http = require('http');
